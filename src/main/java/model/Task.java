@@ -1,35 +1,42 @@
 package model;
 
+import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 public class Task {
-    private long datecreated;
-    private long deadline;
+    private String datecreated;
+    private String deadline;
     private String description;
     private String task;
 
 
     public Task() {
     }
-
-    public Task(long datecreated, long deadline, String description, String task) {
+    public Task(String task,String description){
+        this.task = task;
+        this.description = description;
+    }
+    public Task(String datecreated, String deadline, String description, String task) {
         this.datecreated = datecreated;
         this.deadline = deadline;
         this.description = description;
         this.task = task;
     }
 
-    public long getDatecreated() {
+    public String getDatecreated() {
         return datecreated;
     }
 
-    public void setDatecreated(long datecreated) {
+    public void setDatecreated(String datecreated) {
         this.datecreated = datecreated;
     }
 
-    public long getDeadline() {
+    public String getDeadline() {
         return deadline;
     }
 
-    public void setDeadline(long deadline) {
+    public void setDeadline(String deadline) {
         this.deadline = deadline;
     }
 
@@ -48,4 +55,6 @@ public class Task {
     public void setTask(String task) {
         this.task = task;
     }
+
+
 }

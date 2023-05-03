@@ -1,5 +1,6 @@
 package Database;
 
+import model.Task;
 import model.User;
 
 import java.sql.*;
@@ -37,6 +38,27 @@ public class DatabaseHandler extends Configs {
             e.printStackTrace();
         }
     }
+
+    public void createTask(Task task){
+        String insert = "INSERT INTO " + Const.TASKS_TABLE +"("  +Const.TASKS_DATE + "," +
+                Const.TASKS_DEADLINE + "," + Const.TASK_DES + "," + Const.TASK + ")"+ " VALUES(?,?,?,?)";
+
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = getDbConnection().prepareStatement(insert);
+            preparedStatement.setString(1,task.getDatecreated());
+            preparedStatement.setString(2,task.getDeadline());
+            preparedStatement.setString(3, task.getDescription());
+            preparedStatement.setString(4,task.getTask());
+            preparedStatement.execute();
+            System.out.println(preparedStatement);
+            System.out.println();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public boolean checkUserExist(User user){
         PreparedStatement stmt ;
         ResultSet rs;

@@ -60,6 +60,7 @@ public class AddItemController {
                 AnchorPane formPane = FXMLLoader.load(getClass().getResource("../addItemForm.fxml"));
                 FadeTransition transition = new FadeTransition(Duration.millis(2200),formPane);
                 transition.setFromValue(0f);
+                transition.setFromValue(0f);
                 transition.setToValue(1f);
                 transition.setCycleCount(1);
                 transition.setAutoReverse(false);

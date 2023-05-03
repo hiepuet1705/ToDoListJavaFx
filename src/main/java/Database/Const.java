@@ -20,6 +20,7 @@ public class Const {
     public static final String TASKS_DATE = "datecreated";
     public static final String TASKS_DEADLINE = "deadline";
     public static final String TASK_DES = "description";
+    public static final String TASK = "task";
 
 
 }
