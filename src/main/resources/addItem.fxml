@@ -17,12 +17,12 @@
             </Label>
          </children>
       </AnchorPane>
-      <Label fx:id="noTaskLabel" alignment="CENTER" layoutX="185.0" layoutY="164.0" prefHeight="35.0" prefWidth="189.0" text="No task for today yet!" textAlignment="CENTER">
+      <Label fx:id="noTaskLabel" alignment="CENTER" layoutX="120.0" layoutY="154.0" prefHeight="45.0" prefWidth="320.0" text="Welcome, click to watch and add tasks!" textAlignment="CENTER">
          <font>
-            <Font name="System Bold" size="13.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <ImageView fx:id="addButton" fitHeight="62.0" fitWidth="54.0" layoutX="253.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="addButton" fitHeight="62.0" fitWidth="54.0" layoutX="253.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@add_circle_FILL0_wght400_GRAD0_opsz48.png" />
          </image>

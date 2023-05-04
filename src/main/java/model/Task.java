@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 public class Task {
+    private int id;
     private String datecreated;
     private String deadline;
     private String description;
@@ -13,15 +14,28 @@ public class Task {
 
     public Task() {
     }
-    public Task(String task,String description){
-        this.task = task;
+
+    public Task(int id, String datecreated, String deadline, String description, String task) {
+        this.id = id;
+        this.datecreated = datecreated;
+        this.deadline = deadline;
         this.description = description;
+        this.task = task;
     }
+
     public Task(String datecreated, String deadline, String description, String task) {
         this.datecreated = datecreated;
         this.deadline = deadline;
         this.description = description;
         this.task = task;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getDatecreated() {

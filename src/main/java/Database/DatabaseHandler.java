@@ -93,8 +93,33 @@ public class DatabaseHandler extends Configs {
         }else {
             System.out.println("Pls enter your credentials");
         }
-        return rs;
+        return null;
 
+    }
+    public ResultSet getTasks(){
+        ResultSet rs = null;
+
+            String query = "SELECT * FROM " + Const.TASKS_TABLE ;
+            try {
+                PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
+
+                rs =  preparedStatement.executeQuery();
+                return rs;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        return null;
+    }
+    public void deleteTask(Task task){
+        String query = "Delete from " + Const.TASKS_TABLE + " where " + "taskid =?";
+        try {
+            PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
+            preparedStatement.setInt(1,task.getId());
+            preparedStatement.execute();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

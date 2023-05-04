@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="560.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AddItemControllerForm">
+<AnchorPane prefHeight="407.0" prefWidth="559.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AddItemControllerForm">
    <children>
       <TextField fx:id="taskField" layoutX="14.0" layoutY="113.0" prefHeight="29.0" prefWidth="137.0" promptText="Task">
          <font>
@@ -39,12 +39,12 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <TableView fx:id="tableView" layoutX="170.0" layoutY="113.0" prefHeight="294.0" prefWidth="338.0">
+      <TableView fx:id="tableView" layoutX="158.0" layoutY="113.0" prefHeight="294.0" prefWidth="399.0">
         <columns>
-          <TableColumn fx:id="taskColumn" prefWidth="64.00006103515625" text="Task" />
-          <TableColumn fx:id="descriptionColumn" prefWidth="92.6666259765625" text="Description" />
-            <TableColumn fx:id="deadlineColumn" prefWidth="68.0" text="Deadline" />
-            <TableColumn fx:id="dateCreatedColumn" prefWidth="111.33331298828125" text="Datecreated" />
+          <TableColumn fx:id="taskColumn" prefWidth="36.66668701171875" text="Task" />
+          <TableColumn fx:id="descriptionColumn" prefWidth="162.6667022705078" text="Description" />
+            <TableColumn fx:id="deadlineColumn" prefWidth="60.66668701171875" text="Deadline" />
+            <TableColumn fx:id="dateCreatedColumn" prefWidth="127.99990844726562" text="Datecreated" />
         </columns>
       </TableView>
       <Button fx:id="deleteButton" layoutX="89.0" layoutY="270.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="62.0" style="-fx-background-color: #d32f2f;" text="Delete" textFill="WHITE">
