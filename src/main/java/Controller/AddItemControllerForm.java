@@ -36,7 +36,8 @@ public class AddItemControllerForm implements Initializable {
     private Button saveTaskButton;
     @FXML
     private Button deleteButton;
-
+    @FXML
+    private DatePicker deadlinePicker;
 
     @FXML
     private TableView<Task> tableView;
@@ -73,7 +74,8 @@ public class AddItemControllerForm implements Initializable {
         Task newTask = new Task();
         newTask.setTask(taskField.getText());
         newTask.setDescription(desField.getText());
-        newTask.setDeadline(deadlineField.getText());
+        newTask.setDeadline(deadlinePicker.getValue().toString());
+
         newTask.setDatecreated(LocalDateTime.now().toString());
 
         databaseHandler.createTask(newTask);
