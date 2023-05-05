@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 
@@ -15,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.ImageView;
 import model.Task;
 
@@ -64,8 +66,20 @@ public class AddItemControllerForm implements Initializable {
         ResultSet rs = databaseHandler.getTasks();
         while (rs.next()) {
             int id = rs.getInt(1);
-            taskList.add(new Task(id,rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5)));
+            Task newTask = new Task(id,rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5));
+             taskList.add(newTask);
             //System.out.println(id);
+        }
+
+    }
+    public void checkNotify() throws SQLException {
+        DatabaseHandler databaseHandler = new DatabaseHandler();
+
+        ResultSet rs = databaseHandler.getTasks();
+        while (rs.next()) {
+            int id = rs.getInt(1);
+            Task newTask = new Task(id,rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5));
+            notifyTask(newTask,newTask.getDatecreated().substring(0,10));
         }
 
     }
@@ -92,6 +106,34 @@ public class AddItemControllerForm implements Initializable {
         taskList.removeAll(selectedTasks);
     }
 
+    public void notifyTask( Task task,String localTime){
+        if(task.getDeadline().equals(localTime)){
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Nhắc nhở");
+            alert.setHeaderText(null);
+            alert.setContentText("Hãy thực hiện việc " + task.getTask() );
+            alert.showAndWait();
+        }
+        else return;
+    }
+    public void updateTask(){
+        tableView.setRowFactory(taskTableView -> {
+            TableRow<Task> myRow = new TableRow<>();
+            myRow.setOnMouseClicked(mouseEvent -> {
+                if(mouseEvent.getClickCount() == 1 && (!myRow.isEmpty())){
+                    Task selectedItems = tableView.getSelectionModel().getSelectedItem();
+
+
+                    taskField.setText(selectedItems.getTask());
+                    desField.setText(selectedItems.getDescription());
+                    deadlinePicker.setPromptText(selectedItems.getDeadline());
+                }
+            });
+            return myRow;
+        });
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -99,16 +141,23 @@ public class AddItemControllerForm implements Initializable {
 
         );
         tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
         taskColumn.setCellValueFactory(new PropertyValueFactory<Task, String>("task"));
         descriptionColumn.setCellValueFactory(new PropertyValueFactory<Task, String>("description"));
         dateCreatedColumn.setCellValueFactory(new PropertyValueFactory<Task, String>("datecreated"));
+
         deadlineColumn.setCellValueFactory(new PropertyValueFactory<Task, String>("deadline"));
+
+
+        // render tu database
         try {
             renderTask();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         tableView.setItems(taskList);
+
+        updateTask();
 
         saveTaskButton.setOnMouseClicked(mouseEvent -> {
             try {
@@ -117,6 +166,12 @@ public class AddItemControllerForm implements Initializable {
                 throw new RuntimeException(e);
             }
         });
+        // Nhac nho
+//        try {
+//            checkNotify();
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
 
         deleteButton.setOnMouseClicked(mouseEvent -> {
             deleteTask();
