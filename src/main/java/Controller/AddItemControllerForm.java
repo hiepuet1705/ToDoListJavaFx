@@ -57,11 +57,11 @@ public class AddItemControllerForm implements Initializable {
     private TextField deadlineField;
     private ObservableList<Task> taskList;
 
-    DatabaseHandler databaseHandler = new DatabaseHandler();
+    DatabaseHandler databaseHandler = DatabaseHandler.getInstance();
 
 
     public void renderTask() throws SQLException {
-        DatabaseHandler databaseHandler = new DatabaseHandler();
+        //DatabaseHandler databaseHandler = new DatabaseHandler();
 
         ResultSet rs = databaseHandler.getTasks();
         while (rs.next()) {
@@ -73,7 +73,7 @@ public class AddItemControllerForm implements Initializable {
 
     }
     public void checkNotify() throws SQLException {
-        DatabaseHandler databaseHandler = new DatabaseHandler();
+
 
         ResultSet rs = databaseHandler.getTasks();
         while (rs.next()) {

@@ -51,6 +51,7 @@ public class SignUpController {
     private TextField signupUserName;
 
     private LoginController loginController;
+    private DatabaseHandler databaseHandler = DatabaseHandler.getInstance();
 
     @FXML
     void initialize() {
@@ -74,7 +75,7 @@ public class SignUpController {
 
         User newUser = new User(firstName,lastName,username,password,location,gender);
 
-        DatabaseHandler databaseHandler = new DatabaseHandler();
+
 
         if(databaseHandler.checkUserExist(newUser)){
             System.out.println("Username is existed");

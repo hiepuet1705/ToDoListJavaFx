@@ -42,7 +42,7 @@ public class LoginController {
     PasswordField loginPassword;
 
 
-    private DatabaseHandler databaseHandler;
+    private DatabaseHandler databaseHandler = DatabaseHandler.getInstance();
     @FXML
     TextField loginUsername;
     @FXML
@@ -50,7 +50,6 @@ public class LoginController {
 
     @FXML
     public void initialize() {
-        databaseHandler = new DatabaseHandler();
 
 
         loginButton.setOnAction(event -> {

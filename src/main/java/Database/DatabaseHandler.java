@@ -13,6 +13,16 @@ public class DatabaseHandler extends Configs {
         dbConnection = DriverManager.getConnection(connectionString,dbUser,dbPass);
         return dbConnection;
     }
+    private static final DatabaseHandler databaseHandler = new DatabaseHandler();
+
+    public DatabaseHandler() {
+
+    }
+
+    public static DatabaseHandler getInstance(){
+        return databaseHandler;
+    }
+
 
     // Write
 
