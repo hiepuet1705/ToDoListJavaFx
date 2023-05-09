@@ -12,6 +12,7 @@ public class Main extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login.fxml"));
         Scene scene;
         scene = new Scene(fxmlLoader.load(), 550, 400);
+        scene.getStylesheets().add("style.css");
         stage.setTitle("TodoApp!");
         stage.setScene(scene);
         stage.show();

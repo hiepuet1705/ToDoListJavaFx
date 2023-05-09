@@ -6,23 +6,23 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootAnchorPane" prefHeight="400.0" prefWidth="560.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AddItemController">
+<AnchorPane fx:id="rootAnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AddItemController">
    <children>
-      <AnchorPane prefHeight="98.0" prefWidth="560.0" style="-fx-background-color: #E96051;">
+      <AnchorPane prefHeight="98.0" prefWidth="600.0" style="-fx-background-color: #E96051;">
          <children>
-            <Label alignment="CENTER" layoutX="226.0" layoutY="40.0" prefHeight="31.0" prefWidth="107.0" text="ToDo" textAlignment="CENTER" textFill="WHITE">
+            <Label alignment="CENTER" layoutX="246.0" layoutY="41.0" prefHeight="31.0" prefWidth="107.0" text="ToDo" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <Label fx:id="noTaskLabel" alignment="CENTER" layoutX="120.0" layoutY="154.0" prefHeight="45.0" prefWidth="320.0" text="Welcome, click to watch and add tasks!" textAlignment="CENTER">
+      <Label fx:id="noTaskLabel" alignment="CENTER" layoutX="147.0" layoutY="154.0" prefHeight="45.0" prefWidth="320.0" text="Welcome, click to watch and add tasks!" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <ImageView fx:id="addButton" fitHeight="62.0" fitWidth="54.0" layoutX="253.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="addButton" fitHeight="62.0" fitWidth="54.0" layoutX="273.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@add_circle_FILL0_wght400_GRAD0_opsz48.png" />
          </image>

@@ -131,5 +131,20 @@ public class DatabaseHandler extends Configs {
             e.printStackTrace();
         }
     }
+    public void updateTask(Task task) throws Exception {
+        String query = "Update " + Const.TASKS_TABLE + " SET " + Const.TASKS_DEADLINE + "=?" +"," + Const.TASK+"=?"+","+
+                Const.TASK_DES + "=?" + " Where " + "taskid =?";
+            try{
+                PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
+                preparedStatement.setString(1,task.getDeadline());
+                preparedStatement.setString(2,task.getTask());
+                preparedStatement.setString(3,task.getDescription());
+                preparedStatement.setInt(4,task.getId());
+
+                preparedStatement.executeUpdate();
+            } catch (Exception e) {
+                throw new Exception(e);
+            }
+    }
 
 }
