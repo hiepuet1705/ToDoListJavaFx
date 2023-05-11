@@ -27,9 +27,12 @@ public class AddItemController {
     private ImageView addButton;
     @FXML
    private Label noTaskLabel;
+    @FXML
+    private AnchorPane footer;
 
     @FXML
     void initialize(){
+        footer.getStyleClass().add("footer.css");
         addButton.setOnMouseClicked(event -> {
             System.out.println("Add button clicked");
             Shaker addItemShaker = new Shaker(addButton);
@@ -38,21 +41,15 @@ public class AddItemController {
 
             FadeTransition fadeTransition = new FadeTransition(Duration.millis(0),addButton);
             FadeTransition fadeTransitionLabel = new FadeTransition(Duration.millis(0),noTaskLabel);
-
+            footer.setVisible(false );
 
             addButton.setOpacity(0);
             noTaskLabel.setOpacity(0);
 
-//            fadeTransition.setFromValue(1f);
-//            fadeTransition.setToValue(0f);
-//            fadeTransition.setCycleCount(1);
-//            fadeTransition.setAutoReverse(false);
+
             fadeTransition.play();
 
-//            fadeTransitionLabel.setFromValue(1f);
-//            fadeTransitionLabel.setToValue(0f);
-//            fadeTransitionLabel.setCycleCount(1);
-//            fadeTransitionLabel.setAutoReverse(false);
+;
             fadeTransitionLabel.play();
 
 

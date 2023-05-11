@@ -1,5 +1,6 @@
 package Controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -11,14 +12,21 @@ import java.util.ResourceBundle;
 
 
 import Database.DatabaseHandler;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.fxml.JavaFXBuilderFactory;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import javafx.stage.Stage;
+import javafx.util.Duration;
 import model.Task;
 
 public class AddItemControllerForm implements Initializable {
@@ -64,9 +72,13 @@ public class AddItemControllerForm implements Initializable {
     private TableColumn<Task, String> deadlineColumn;
     @FXML
     private TextField deadlineField;
+    @FXML
+    private Button trask;
+
     private ObservableList<Task> taskList;
 
     DatabaseHandler databaseHandler = DatabaseHandler.getInstance();
+
 
 
     public void renderTask() throws SQLException {
@@ -82,17 +94,6 @@ public class AddItemControllerForm implements Initializable {
 
     }
 
-    public void checkNotify() throws SQLException {
-
-
-        ResultSet rs = databaseHandler.getTasks();
-        while (rs.next()) {
-            int id = rs.getInt(1);
-            Task newTask = new Task(id, rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
-            notifyTask(newTask, newTask.getDatecreated().substring(0, 10));
-        }
-
-    }
 
     public void addNewTask() throws ParseException, SQLException {
 
@@ -117,15 +118,23 @@ public class AddItemControllerForm implements Initializable {
         taskList.removeAll(selectedTasks);
     }
 
-    public void notifyTask(Task task, String localTime) {
-        if (task.getDeadline().equals(localTime)) {
+    public void notifyTask() throws SQLException, ClassNotFoundException {
+        ResultSet rs = databaseHandler.getDeadLine();
+        String task = "";
+        while(rs.next()){
+           task = task + rs.getString(5) +", ";
+        }
+        String finalTask = task;
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(1500), event -> {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Cảnh báo");
+            alert.setHeaderText("Đã đến deadline");
+            alert.setContentText("Hãy làm ngay những việc sau " + finalTask);
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Nhắc nhở");
-            alert.setHeaderText(null);
-            alert.setContentText("Hãy thực hiện việc " + task.getTask());
-            alert.showAndWait();
-        } else return;
+            alert.show();
+        }));
+        timeline.play();
+
     }
 
     public void getSelectedTask() {
@@ -220,11 +229,21 @@ public class AddItemControllerForm implements Initializable {
 
 
         });
+        try {
+            notifyTask();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
 
         saveTaskButton.setOnMouseClicked(mouseEvent -> {
             try {
                 addNewTask();
+                notifyTask();
             } catch (ParseException | SQLException e) {
+                throw new RuntimeException(e);
+            } catch (ClassNotFoundException e) {
                 throw new RuntimeException(e);
             }
         });

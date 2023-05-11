@@ -4,6 +4,7 @@ import model.Task;
 import model.User;
 
 import java.sql.*;
+import java.time.LocalDateTime;
 
 public class DatabaseHandler extends Configs {
     Connection dbConnection;
@@ -145,6 +146,14 @@ public class DatabaseHandler extends Configs {
             } catch (Exception e) {
                 throw new Exception(e);
             }
+    }
+    public ResultSet getDeadLine() throws SQLException, ClassNotFoundException {
+        String query = "SELECT * FROM tasks WHERE deadline <= "+"?";
+        PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
+        String dateNow = LocalDateTime.now().getYear() + "-" + LocalDateTime.now().getMonth()+"-"+LocalDateTime.now().getDayOfMonth();
+        preparedStatement.setString(1,"2023-05-20" );
+        ResultSet rs =  preparedStatement.executeQuery();
+        return rs;
     }
 
 }

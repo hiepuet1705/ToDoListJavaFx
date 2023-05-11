@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="407.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AddItemControllerForm">
+<AnchorPane prefHeight="445.0" prefWidth="680.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AddItemControllerForm">
    <children>
-      <TextField fx:id="taskField" layoutX="14.0" layoutY="113.0" prefHeight="29.0" prefWidth="137.0" promptText="Task">
+      <TextField fx:id="taskField" layoutX="14.0" layoutY="134.0" prefHeight="29.0" prefWidth="137.0" promptText="Task">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
@@ -21,7 +21,7 @@
             <Glow />
          </effect>
       </TextField>
-      <TextField fx:id="desField" layoutX="14.0" layoutY="163.0" prefHeight="29.0" prefWidth="137.0" promptText="Description" style="-fx-border-radius: 10px;">
+      <TextField fx:id="desField" layoutX="14.0" layoutY="175.0" prefHeight="29.0" prefWidth="137.0" promptText="Description" style="-fx-border-radius: 10px;">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
@@ -29,36 +29,28 @@
             <Glow />
          </effect>
       </TextField>
-      <TextField fx:id="deadlineField" layoutX="14.0" layoutY="211.0" prefHeight="29.0" prefWidth="137.0" promptText="Deadline" style="-fx-border-radius: 10px;">
-         <font>
-            <Font name="Arial" size="14.0" />
-         </font>
-         <effect>
-            <Glow />
-         </effect>
-      </TextField>
-      <Button fx:id="saveTaskButton" layoutX="9.0" layoutY="278.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="62.0" style="-fx-background-color: #008000;" text="Save" textFill="WHITE">
+      <Button fx:id="saveTaskButton" layoutX="9.0" layoutY="277.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="62.0" style="-fx-background-color: #008000;" text="Save" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <TableView fx:id="tableView" layoutX="151.0" layoutY="113.0" prefHeight="294.0" prefWidth="439.0">
+      <TableView fx:id="tableView" layoutX="168.0" layoutY="125.0" prefHeight="317.0" prefWidth="512.0">
         <columns>
-          <TableColumn fx:id="taskColumn" prefWidth="44.666717529296875" text="Task" />
-          <TableColumn fx:id="descriptionColumn" prefWidth="145.33335876464844" text="Description" />
-            <TableColumn fx:id="deadlineColumn" prefWidth="124.00006103515625" text="Deadline" />
-            <TableColumn fx:id="dateCreatedColumn" prefWidth="124.66665649414062" text="Datecreated" />
+          <TableColumn fx:id="taskColumn" prefWidth="55.999969482421875" text="Task" />
+          <TableColumn fx:id="descriptionColumn" prefWidth="150.66673278808594" text="Description" />
+            <TableColumn fx:id="deadlineColumn" prefWidth="143.33328247070312" text="Deadline" />
+            <TableColumn fx:id="dateCreatedColumn" prefWidth="162.0" text="Datecreated" />
         </columns>
       </TableView>
-      <Button fx:id="deleteButton" layoutX="85.0" layoutY="278.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="62.0" style="-fx-background-color: #d32f2f;" text="Delete" textFill="WHITE">
+      <Button fx:id="deleteButton" layoutX="89.0" layoutY="277.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="62.0" style="-fx-background-color: #d32f2f;" text="Delete" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <DatePicker fx:id="deadlinePicker" layoutX="14.0" layoutY="211.0" prefHeight="29.0" prefWidth="137.0" promptText="Deadline" />
-      <Button fx:id="updateButton" layoutX="40.0" layoutY="318.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="62.0" text="Update" />
+      <DatePicker fx:id="deadlinePicker" layoutX="14.0" layoutY="214.0" prefHeight="29.0" prefWidth="137.0" promptText="Deadline" />
+      <Button fx:id="updateButton" layoutX="52.0" layoutY="320.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="62.0" text="Update" />
       <VBox layoutX="83.0" layoutY="14.0" prefHeight="81.0" prefWidth="33.0" />
-      <ComboBox fx:id="hourBox" layoutX="26.0" layoutY="247.0" prefHeight="25.0" prefWidth="62.0" promptText="H" />
-      <ComboBox fx:id="minuteBox" layoutX="89.0" layoutY="247.0" prefHeight="25.0" prefWidth="62.0" promptText="M" />
+      <ComboBox fx:id="hourBox" layoutX="27.0" layoutY="246.0" prefHeight="25.0" prefWidth="62.0" promptText="H" />
+      <ComboBox fx:id="minuteBox" layoutX="89.0" layoutY="246.0" prefHeight="25.0" prefWidth="62.0" promptText="M" />
    </children>
 </AnchorPane>

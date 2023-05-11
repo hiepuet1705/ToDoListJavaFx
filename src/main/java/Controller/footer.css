@@ -1,0 +1,6 @@
+#footer {
+    -fx-background-color: #3333333;
+    -fx-text-fill: #fff;
+    -fx-alignment: center;
+    -fx-padding: 10px;
+}
